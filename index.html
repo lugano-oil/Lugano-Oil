@@ -251,24 +251,24 @@
       transform: translateY(-6px);
       border-color: rgba(212, 175, 55, 0.4);
     }
-
+    
     .card-image {
       width: 100%;
-      height: 240px;
+      height: 240px; /* Define una altura fija para todas las tarjetas */
+      overflow: hidden; /* Corta cualquier exceso de la imagen */
       background: #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 1px;
       border-bottom: 1px solid var(--border-color);
     }
-
+    
     .card-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Ajusta la imagen para rellenar el espacio sin deformarse */
+      object-position: center; /* Centra la foto dentro del recuadro */
+      display: block;
     }
 
     .card-content {
@@ -431,7 +431,6 @@
       <!-- Card 1 -->
       <div class="gallery-card">
       <img src="OLEODOTTO 2.jpg" alt="Energy Trading">
-          <span>[ Photo 1: Energy Trading ]</span>
         </div>
         <div class="card-content">
           <span class="card-tag">Energy Brokerage</span>
@@ -443,7 +442,6 @@
       <!-- Card 2 -->
       <div class="gallery-card">
       <img src="RINNOVABILI 3.jpg" alt="Green Energy">          
-          <span>[ Photo 2: Renewables ]</span>
         </div>
         <div class="card-content">
           <span class="card-tag">Sustainability</span>
@@ -455,7 +453,6 @@
       <!-- Card 3 -->
       <div class="gallery-card">
       <img src="movimterra2.jpg" alt="Industrial Machinery">          
-          <span>[ Photo 3: Machinery & Trade ]</span>
         </div>
         <div class="card-content">
           <span class="card-tag">Import & Export</span>
