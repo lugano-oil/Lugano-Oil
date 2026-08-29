@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUGANO OIL SA | Swiss Global Energy & Commodities Trading</title>
+  <style>
+    /* Reset & Dark Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #0b0f19;         /* Carbon Deep Navy */
+      --bg-card: #151c2e;         /* Slate Navy Card */
+      --bg-card-hover: #1e2842;   /* Hover State */
+      --accent: #d4af37;          /* Swiss Gold */
+      --accent-hover: #f3e5ab;    /* Light Gold */
+      --text-main: #f1f5f9;       /* Soft White */
+      --text-muted: #94a3b8;      /* Muted Slate */
+      --border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top Utility Bar */
+    .utility-bar {
+      background-color: #05070d;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 0.6rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .utility-bar span {
+      letter-spacing: 0.5px;
+    }
+
+    /* Main Navigation */
+    header {
+      background-color: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 3rem;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Section Base */
+    .section-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .title-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 1rem auto 4rem;
+    }
+
+    /* About Section & Stats */
+    .about-lead {
+      max-width: 850px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .service-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Operations Cards Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 240px;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      background-color: rgba(212, 175, 55, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Contact Block */
+    .contact-container {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 5rem 3rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-box {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .contact-box:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-box h4 {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .contact-box p, .contact-box a {
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .contact-box a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #05070d;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="utility-bar">
+    <span>Swiss Mercantile Entity CHE-113.833.843</span>
+    <span>Breganzona, Lugano, Switzerland</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">LUGANO OIL <span>SA</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#operations">Operations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- About Us Section -->
+  <section id="about" class="section-wrapper">
+    <h2 class="section-title">Corporate Overview</h2>
+    <div class="title-divider"></div>
+    
+    <p class="about-lead">
+      Incorporated in September 2007 in Breganzona, Switzerland, LUGANO OIL SA operates at the intersection of international energy brokerage, bulk raw material logistics, and heavy industrial trade.
+    </p>
+
+    <!-- Stat Highlights -->
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">2007</div>
+        <div class="stat-label">Year Established</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Ticino</div>
+        <div class="stat-label">Swiss Canton</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Global</div>
+        <div class="stat-label">Trade Reach</div>
+      </div>
+    </div>
+
+    <!-- Core Services -->
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Fossil Fuel Intermediation</h3>
+        <p>Specialized global brokerage in crude oil, natural gas, refined petroleum derivatives, and synthetic fuel solutions across international supply lines.</p>
+      </div>
+      <div class="service-card">
+        <h3>Renewable Energy Strategy</h3>
+        <p>Strategic advisory and market mediation in renewable energy, supporting the integration of sustainable technologies and green infrastructure.</p>
+      </div>
+      <div class="service-card">
+        <h3>Machinery & Commodities</h3>
+        <p>Comprehensive procurement, import-export facilitation, and physical trading of heavy industrial machinery, plant equipment, and bulk raw materials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Operations Grid -->
+  <section id="operations" class="section-wrapper">
+    <h2 class="section-title">Key Activities</h2>
+    <div class="title-divider"></div>
+    
+    <div class="gallery-grid">
+      <!-- Card 1 -->
+      <div class="gallery-card">
+        <div class="card-image">
+          <!-- Replace with: <img src="your-photo-1.jpg" alt="Energy Trading"> -->
+          <span>[ Photo 1: Energy Trading ]</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Energy Brokerage</span>
+          <h3 class="card-title">Petroleum & Natural Gas</h3>
+          <p class="card-description">International mediation and trade execution for crude oil, LNG, and refined petroleum products tailored to global industrial demand.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="gallery-card">
+        <div class="card-image">
+          <!-- Replace with: <img src="your-photo-2.jpg" alt="Green Energy"> -->
+          <span>[ Photo 2: Renewables ]</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Sustainability</span>
+          <h3 class="card-title">Renewable Energy Solutions</h3>
+          <p class="card-description">Consulting and structured commercial intermediation aimed at accelerating renewable energy transition projects.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="gallery-card">
+        <div class="card-image">
+          <!-- Replace with: <img src="your-photo-3.jpg" alt="Industrial Machinery"> -->
+          <span>[ Photo 3: Machinery & Trade ]</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Import & Export</span>
+          <h3 class="card-title">Machinery & Raw Commodities</h3>
+          <p class="card-description">End-to-end commercial management for importing and exporting industrial equipment, heavy machinery, and vital raw inputs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-wrapper">
+    <div class="contact-container">
+      <h2 class="section-title">Corporate Contact</h2>
+      <div class="title-divider"></div>
+      
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h4>Registered Address</h4>
+          <p>Via Crespera 55<br>6932 Breganzona<br>Switzerland</p>
+        </div>
+        <div class="contact-box">
+          <h4>Swiss Registration</h4>
+          <p>Register ID: CHE-113.833.843<br>Date of Reg: 26.09.2007</p>
+        </div>
+        <div class="contact-box">
+          <h4>Direct Inquiries</h4>
+          <p>Email: <a href="mailto:lugano.oil@bluewin.ch">lugano.oil@bluewin.ch</a><br>Phone: <a href="tel:+41783171329">+41 78 317 13 29</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 LUGANO OIL SA. Registered in Ticino, Switzerland. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
