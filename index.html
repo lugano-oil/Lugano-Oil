@@ -13,13 +13,13 @@
     }
 
     :root {
-      --bg-dark: #0b0f19;         /* Carbon Deep Navy */
-      --bg-card: #151c2e;         /* Slate Navy Card */
-      --bg-card-hover: #1e2842;   /* Hover State */
-      --accent: #d4af37;          /* Swiss Gold */
-      --accent-hover: #f3e5ab;    /* Light Gold */
-      --text-main: #f1f5f9;       /* Soft White */
-      --text-muted: #94a3b8;      /* Muted Slate */
+      --bg-dark: #0b0f19;          /* Carbon Deep Navy */
+      --bg-card: #151c2e;          /* Slate Navy Card */
+      --bg-card-hover: #1e2842;    /* Hover State */
+      --accent: #d4af37;           /* Swiss Gold */
+      --accent-hover: #f3e5ab;     /* Light Gold */
+      --text-main: #f1f5f9;        /* Soft White */
+      --text-muted: #94a3b8;       /* Muted Slate */
       --border-color: rgba(255, 255, 255, 0.08);
     }
 
@@ -300,6 +300,87 @@
       line-height: 1.6;
     }
 
+    /* Carousel Section */
+    .carousel-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 4rem auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+    }
+
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 450px;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(11, 15, 25, 0.7);
+      color: var(--accent);
+      border: 1px solid var(--border-color);
+      font-size: 1.5rem;
+      padding: 0.8rem 1.2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+    }
+
+    .carousel-btn.prev {
+      left: 1.5rem;
+    }
+
+    .carousel-btn.next {
+      right: 1.5rem;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--accent);
+    }
+
     /* Contact Block */
     .contact-container {
       background: var(--bg-card);
@@ -361,13 +442,11 @@
 </head>
 <body>
 
-  <!-- Top Utility Bar -->
   <div class="utility-bar">
     <span>Swiss Mercantile Entity CHE-113.833.843</span>
     <span>Breganzona, Lugano, Switzerland</span>
   </div>
 
-  <!-- Header Navigation -->
   <header>
     <div class="nav-container">
       <div class="brand">LUGANO OIL <span>SA</span></div>
@@ -379,7 +458,6 @@
     </div>
   </header>
 
-  <!-- About Us Section -->
   <section id="about" class="section-wrapper">
     <h2 class="section-title">Corporate Overview</h2>
     <div class="title-divider"></div>
@@ -388,7 +466,6 @@
       Incorporated in September 2007 in Breganzona, Switzerland, LUGANO OIL SA operates at the intersection of international energy brokerage, bulk raw material logistics, and heavy industrial trade.
     </p>
 
-    <!-- Stat Highlights -->
     <div class="stats-container">
       <div class="stat-item">
         <div class="stat-number">2007</div>
@@ -404,7 +481,6 @@
       </div>
     </div>
 
-    <!-- Core Services -->
     <div class="services-grid">
       <div class="service-card">
         <h3>Fossil Fuel Intermediation</h3>
@@ -421,13 +497,11 @@
     </div>
   </section>
 
-  <!-- Global Operations Grid -->
   <section id="operations" class="section-wrapper">
     <h2 class="section-title">Key Activities</h2>
     <div class="title-divider"></div>
     
     <div class="gallery-grid">
-      <!-- Card 1 -->
       <div class="gallery-card">
         <div class="card-image">
           <img src="OLEODOTTO 2.jpg" alt="Energy Trading">
@@ -439,7 +513,6 @@
         </div>
       </div>
 
-      <!-- Card 2 -->
       <div class="gallery-card">
         <div class="card-image">
           <img src="RINNOVABILI 3.jpg" alt="Green Energy">
@@ -451,7 +524,6 @@
         </div>
       </div>
 
-      <!-- Card 3 -->
       <div class="gallery-card">
         <div class="card-image">
           <img src="movimterra2.jpg" alt="Industrial Machinery">
@@ -463,9 +535,32 @@
         </div>
       </div>
     </div>
+
+    <div class="carousel-container">
+      <div class="carousel-slides" id="carouselSlides">
+        <div class="carousel-slide">
+          <img src="fonti-rinnovabili.jpg" alt="Slide 1">
+        </div>
+        <div class="carousel-slide">
+          <img src="oleodotto.jpg" alt="Slide 2">
+        </div>
+        <div class="carousel-slide">
+          <img src="i-fuoristrada-veri-esistono-ancora-ecco-cosa-offre-il-mercato.webp" alt="Slide 3">
+        </div>
+      </div>
+
+      <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
+    </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="section-wrapper">
     <div class="contact-container">
       <h2 class="section-title">Corporate Contact</h2>
@@ -488,10 +583,41 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 LUGANO OIL SA. Registered in Ticino, Switzerland. All rights reserved.</p>
   </footer>
+
+  <script>
+    let currentSlideIndex = 0;
+    const slides = document.getElementById('carouselSlides');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = 3;
+
+    function showSlide(index) {
+      if (index >= totalSlides) currentSlideIndex = 0;
+      else if (index < 0) currentSlideIndex = totalSlides - 1;
+      else currentSlideIndex = index;
+
+      slides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlideIndex);
+      });
+    }
+
+    function moveSlide(step) {
+      showSlide(currentSlideIndex + step);
+    }
+
+    function currentSlide(index) {
+      showSlide(index);
+    }
+
+    // Transición automática cada 5 segundos
+    setInterval(() => {
+      moveSlide(1);
+    }, 5000);
+  </script>
 
 </body>
 </html>
