@@ -72,17 +72,26 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 2rem;
+      padding: 1rem 2rem;
     }
 
     .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
       display: flex;
       align-items: center;
+      gap: 1rem; /* Espacio entre el logo y el texto */
     }
 
-    /* Estilo añadido para controlar la imagen del logo */
+    .brand span {
+      color: var(--accent);
+    }
+
+    /* Estilo del logo agrandado */
     .logo-img {
-      height: 50px; /* Puedes subir o bajar este valor (ej: 40px, 60px) según el tamaño que desees */
+      height: 70px; /* Tamaño del logo agrandado (puedes subirlo a 80px u 90px si lo quieres aún más grande) */
       width: auto;
       object-fit: contain;
     }
@@ -447,9 +456,10 @@
 
   <header>
     <div class="nav-container">
-      <!-- LOGO AGREGADO AQUÍ -->
+      <!-- LOGO AGRANDADO + NOMBRE -->
       <div class="brand">
-        <a href="#"><img src="LOGO LUGANO OIL SA.jpg" alt="LUGANO OIL SA Logo" class="logo-img"></a>
+        <img src="LOGO LUGANO OIL SA.jpg" alt="LUGANO OIL SA Logo" class="logo-img">
+        <span>LUGANO OIL <span>SA</span></span>
       </div>
       <ul class="nav-links">
         <li><a href="#about">About Us</a></li>
