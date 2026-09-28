@@ -76,17 +76,15 @@
     }
 
     .brand {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
     }
 
-    .brand span {
-      color: var(--accent);
+    /* Estilo añadido para controlar la imagen del logo */
+    .logo-img {
+      height: 50px; /* Puedes subir o bajar este valor (ej: 40px, 60px) según el tamaño que desees */
+      width: auto;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -449,7 +447,10 @@
 
   <header>
     <div class="nav-container">
-      <div class="brand">LUGANO OIL <span>SA</span></div>
+      <!-- LOGO AGREGADO AQUÍ -->
+      <div class="brand">
+        <a href="#"><img src="LOGO LUGANO OIL SA.jpg" alt="LUGANO OIL SA Logo" class="logo-img"></a>
+      </div>
       <ul class="nav-links">
         <li><a href="#about">About Us</a></li>
         <li><a href="#operations">Operations</a></li>
@@ -553,7 +554,6 @@
       <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
 
       <div class="carousel-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
         <span class="dot active" onclick="currentSlide(0)"></span>
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
